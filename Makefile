@@ -1,12 +1,12 @@
-all: static
+all: dist/static
 	npm start
 
-static:
+dist/static: static
 	mkdir -p dist
 	cp -r static dist/static
 
 watch:
-	npm watch
+	npm run watch
 
 deploy: all
 	git subtree push --prefix dist origin gh-pages

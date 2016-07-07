@@ -4,6 +4,7 @@
     "jade": "^1.11.0"
   },
   "scripts": {
-    "start": "jade -P . -o dist"
+    "start": "jade -P . -o dist",
+    "watch": "jade -wP . -o dist"
   }
 }
