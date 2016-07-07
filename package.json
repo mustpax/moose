@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "eslint": "^3.0.1",
+    "jade": "^1.11.0"
+  },
+  "scripts": {
+    "start": "jade -P . -o dist"
+  }
+}
