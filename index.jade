@@ -11,12 +11,17 @@ html
         .col-xs-12
           .page-header
             h1 Functional JavaScript Snippets
+              small &nbsp; by Moose
           p.
-            JavaScript is a functional language. Here are some fun functional
-            snippets.
-          
+            JavaScript supports first-class functions which makes a lot of
+            functional programming easy.
+            Also, as of ES5 JavaScript has built-in support for 
+            functional programming constructs like a #[code .map()] &amp;
+            #[code .reduce()] which is even more fun.
+          p.
+            Here are some fun snippets to get the creative juices flowing.
           div
-            h2 Parse binary numbers with #[code .reduce()]
+            h3 Parse binary numbers with #[code .reduce()]
             pre: code.
               function parseBinary(str) {
                 return str.split('').reduce(function(a, b) {
@@ -28,7 +33,38 @@ html
               parseBinary('0001') -> 1
               parseBinary('111')  -> 7
               parseBinary('1000') -> 8
-          
+            
+          div
+            h3 Infix calculator
+            p.
+              Without operator precedence. With #[code .reduce()] and
+              using #[code _.groupBy()].
+            pre: code.
+              function pairs(items) {
+                var result = _.groupBy(items, function(item, i) {
+                    return Math.floor(i / 2);
+                });
+                return _.values(result);
+              }
+
+              function calc(expression) {
+                var tokens = expression.split(' ');
+                var n = parseInt(tokens[0]);
+                tokens = tokens.slice(1);
+                return pairs(tokens).reduce(function(tot, oper) {
+                  if (oper[0] === '+') {
+                    return tot + parseInt(oper[1]);
+                  } else if (oper[0] === '-') {
+                    return tot - parseInt(oper[1]);
+                  } else if (oper[0] === '/') {
+                    return tot / parseInt(oper[1]);
+                  } else if (oper[0] === '*') {
+                    return tot * parseInt(oper[1]);
+                  }
+                }, n);
+              }
+
+              calc('1 + 2 * 4 / 1 / 12 - 8') -> -7
 
     script(src="static/highlight.min.js")
     script.
