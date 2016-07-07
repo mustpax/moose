@@ -4,6 +4,7 @@ html
     title Functional JavaScript Snippets
     meta(charset="utf-8")
     link(rel="stylesheet", href="static/bootstrap.readable.min.css")
+    link(rel="stylesheet", href="static/hightlight.default.min.css")
   body
     .container
       .row
@@ -13,3 +14,22 @@ html
           p.
             JavaScript is a functional language. Here are some fun functional
             snippets.
+          
+          div
+            h2 Parse binary numbers with #[code .reduce()]
+            pre: code.
+              function parseBinary(str) {
+                return str.split('').reduce(function(a, b) {
+                  return a * 2 + (b === '0' ? 0 : 1);
+                }, 0);
+              }
+              
+              parseBinary('0000') -> 0
+              parseBinary('0001') -> 1
+              parseBinary('111')  -> 7
+              parseBinary('1000') -> 8
+          
+
+    script(src="static/highlight.min.js")
+    script.
+      hljs.initHighlightingOnLoad();
