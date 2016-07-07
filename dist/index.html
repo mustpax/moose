@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Functional JavaScript Snippets</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="static/bootstrap.readable.min.css">
+    <link rel="stylesheet" href="static/hightlight.default.min.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="page-header">
+            <h1>Functional JavaScript Snippets</h1>
+          </div>
+          <p>
+            JavaScript is a functional language. Here are some fun functional
+            snippets.
+            
+          </p>
+          <div>
+            <h2>Parse binary numbers with <code>.reduce()</code></h2>
+            <pre><code>function parseBinary(str) {
+  return str.split('').reduce(function(a, b) {
+    return a * 2 + (b === '0' ? 0 : 1);
+  }, 0);
+}
+
+parseBinary('0000') -> 0
+parseBinary('0001') -> 1
+parseBinary('111')  -> 7
+parseBinary('1000') -> 8
+
+</code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="static/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
