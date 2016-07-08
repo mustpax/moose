@@ -39,6 +39,35 @@ html
               parseBinary('1000') -> 8
             
           div
+            h3 Group elements using reduce
+            p.
+              This function takes an array and groups all the items 
+              from the array that have the same value for #[code fn(item)].
+            p.
+              Reduce can solve any problem that can be solved by
+              tail recursion.
+            pre: code.
+              function groupBy(arr, fn) {
+                arr = arr.slice(); // clone so we don't modify array in place
+                // sort items so items that have the same fn(item) are
+                // adjacent
+                arr.sort(function(a, b) {
+                  return fn(a) > fn(b) ? 1 : -1;
+                });
+                return arr.reduce(function(out, item) {
+                  if (! out.length) {
+                    return [[item]]
+                  }
+                  if (fn(out[out.length - 1][0]) === fn(item)) {
+                    out[out.length - 1].push(item);
+                    return out;
+                  }
+                  out.push([item]);
+                  return out;
+                }, []);
+              }
+            
+          div
             h3 Infix calculator
             p.
               Without operator precedence. With #[code .reduce()] and

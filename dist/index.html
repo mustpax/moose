@@ -43,6 +43,37 @@ parseBinary('1000') -> 8
 </code></pre>
           </div>
           <div>
+            <h3>Group elements using reduce</h3>
+            <p>
+              This function takes an array and groups all the items 
+              from the array that have the same value for <code>fn(item)</code>.
+            </p>
+            <p>
+              Reduce can solve any problem that can be solved by
+              tail recursion.
+            </p>
+            <pre><code>function groupBy(arr, fn) {
+  arr = arr.slice(); // clone so we don't modify array in place
+  // sort items so items that have the same fn(item) are
+  // adjacent
+  arr.sort(function(a, b) {
+    return fn(a) > fn(b) ? 1 : -1;
+  });
+  return arr.reduce(function(out, item) {
+    if (! out.length) {
+      return [[item]]
+    }
+    if (fn(out[out.length - 1][0]) === fn(item)) {
+      out[out.length - 1].push(item);
+      return out;
+    }
+    out.push([item]);
+    return out;
+  }, []);
+}
+</code></pre>
+          </div>
+          <div>
             <h3>Infix calculator</h3>
             <p>Without operator precedence. With <code>.reduce()</code> and
               using <code>_.groupBy()</code>.
