@@ -21,6 +21,10 @@
             <code>.reduce()</code> which is even more fun.
           </p>
           <p>Here are some fun snippets to get the creative juices flowing.</p>
+          <p>
+            Based on exercises from
+            <a href="https://www.4clojure.com/problems">4Clojure.</a>
+          </p>
           <div>
             <h3>Parse binary numbers with <code>.reduce()</code></h3>
             <pre><code>function parseBinary(str) {
@@ -64,7 +68,24 @@ function calc(expression) {
   }, n);
 }
 
-calc('1 + 2 * 4 / 1 / 12 - 8') -> -7
+calc('1 + 2 * 4 / 1 / 12 - 8') -> -7</code></pre>
+          </div>
+          <div>
+            <h3>Anagram Finder</h3>
+            <p>
+              This function takes an array of words and groups every word
+              that is an anagram of eachother together.
+            </p>
+            <pre><code>function anagrams(arr) {
+  return _.values(_.groupBy(arr, function(word) {
+    var letters = word.split('');
+    letters.sort();
+    return letters.join('');
+  }))
+}
+
+anagrams(['aba', 'baa', 'aab', 'c']) -> [['aba', 'baa', 'aab'], ['c']]
+anagrams(['aab', 'aba', 'xy', 'xy']) -> [['aab', 'aba'], ['xy', 'xy']]
 </code></pre>
           </div>
         </div>

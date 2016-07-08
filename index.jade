@@ -20,6 +20,9 @@ html
             #[code .reduce()] which is even more fun.
           p.
             Here are some fun snippets to get the creative juices flowing.
+          p.
+            Based on exercises from
+            #[a(href="https://www.4clojure.com/problems") 4Clojure.]
           div
             h3 Parse binary numbers with #[code .reduce()]
             pre: code.
@@ -65,6 +68,22 @@ html
               }
 
               calc('1 + 2 * 4 / 1 / 12 - 8') -> -7
+          div
+            h3 Anagram Finder
+            p.
+              This function takes an array of words and groups every word
+              that is an anagram of eachother together.
+            pre: code.
+              function anagrams(arr) {
+                return _.values(_.groupBy(arr, function(word) {
+                  var letters = word.split('');
+                  letters.sort();
+                  return letters.join('');
+                }))
+              }
+              
+              anagrams(['aba', 'baa', 'aab', 'c']) -> [['aba', 'baa', 'aab'], ['c']]
+              anagrams(['aab', 'aba', 'xy', 'xy']) -> [['aab', 'aba'], ['xy', 'xy']]
 
     script(src="static/highlight.min.js")
     script.
