@@ -3,10 +3,29 @@
   <head>
     <title>Functional JavaScript Snippets</title>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="static/bootstrap.readable.min.css">
-    <link rel="stylesheet" href="static/hightlight.default.min.css">
+    <link rel="stylesheet" href="{{ site.url }}/static/bootstrap.readable.min.css">
+    <link rel="stylesheet" href="{{ site.url }}/static/hightlight.default.min.css">
   </head>
   <body>
-    {{ content }}
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+        {% if page.path contains '_posts' %}
+          {{ content }}
+        {% else %}
+        <div class="page-header">
+          <h1>Functional JavaScript Snippets<small>&nbsp; by Moose</small></h1>
+        </div>
+        <ul>
+          {% for post in site.posts %}
+          <li>
+            <a href="{{ post.url }}">{{ post.title }}</a>
+          </li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+        </div>
+      </div>
+    </div>
   </body>
 </html>
