@@ -2,7 +2,10 @@ all:
 	npm start
 
 watch:
-	npm run watch
+	jekyll serve
+
+new:
+	./new_post.sh
 
 deploy: all
 	git subtree push --prefix dist origin gh-pages
