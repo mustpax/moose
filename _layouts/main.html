@@ -15,11 +15,13 @@
         </div>
         {% if page.path contains '_posts' %}
           {{ content }}
+        {% elsif page.path contains '404' %}
+          {{ content }}
         {% else %}
-        {% for post in site.posts %}
-        {{ post.content }}
-        <a href="{{ post.url }}">{{ post.title }}</a>
-        {% endfor %}
+          {% for post in site.posts %}
+            {{ post.content }}
+            <a href="{{ post.url }}">{{ post.title }}</a>
+          {% endfor %}
         {% endif %}
         </div>
       </div>
