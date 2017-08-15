@@ -10,22 +10,21 @@
     <div class="container">
       <div class="row">
         <div class="col-xs-12">
-        {% if page.path contains '_posts' %}
-          {{ content }}
-        {% else %}
         <div class="page-header">
           <h1>Functional JavaScript Snippets<small>&nbsp; by Moose</small></h1>
         </div>
-        <ul>
-          {% for post in site.posts %}
-          <li>
-            <a href="{{ post.url }}">{{ post.title }}</a>
-          </li>
-          {% endfor %}
-        </ul>
+        {% if page.path contains '_posts' %}
+          {{ content }}
+        {% else %}
+        {% for post in site.posts %}
+        {{ post.content }}
+        <a href="{{ post.url }}">{{ post.title }}</a>
+        {% endfor %}
         {% endif %}
         </div>
       </div>
     </div>
+    <script src="{{ site.url }}/static/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
   </body>
 </html>
